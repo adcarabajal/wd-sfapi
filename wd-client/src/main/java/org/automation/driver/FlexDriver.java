@@ -46,6 +46,18 @@ public class FlexDriver {
         return call("getFlexText", objectId, "dummy");
     }
 
+    public void selectItem(String objectId, String text){
+        call("doFlexSelect", objectId, text);
+    }
+
+    public void check(String objectId, String checked){
+        call("doFlexCheckBox", objectId, checked);
+    }
+
+    public boolean isEnabled(String objectId){
+        return Boolean.parseBoolean(call("getFlexEnabled", objectId, ""));
+    }
+
     private String call(final String functionName, final String... args) {
         final Object result =   ((JavascriptExecutor)webDriver).executeScript(
                     makeJsFunction(functionName, args),
