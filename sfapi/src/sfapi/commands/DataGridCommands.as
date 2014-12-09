@@ -701,10 +701,10 @@ public class DataGridCommands extends AbstractCommand
             // Make certain the rowIndex and colIndex do not exceed the length of the
             // Datagrid ListBaseContentHolders rows and columns.
             if (dgContentList.listItems.length > int(rowIndex) && dgContentList.listItems[int(rowIndex)].length > int(columnIndex)) {
-//                var event:ListEvent = new ListEvent(ListEvent.ITEM_DOUBLE_CLICK, false, false, int(columnIndex), int(rowIndex));
-//                return String(child.dispatchEvent(event));
-                var cell:Object = dgContentList.listItems[int(rowIndex)][int(columnIndex)];
-                return String(cell.dispatchEvent(new MouseEvent(MouseEvent.DOUBLE_CLICK)));
+                var event:ListEvent = new ListEvent(ListEvent.ITEM_DOUBLE_CLICK, false, false, int(columnIndex), int(rowIndex));
+                return String(child.dispatchEvent(event));
+                //var cell:Object = dgContentList.listItems[int(rowIndex)][int(columnIndex)];
+                //return String(cell.dispatchEvent(new ListEvent(ListEvent.ITEM_DOUBLE_CLICK)));
             }
             return ErrorMessages.getError(ErrorMessages.ERROR_NO_CHILD_UICOMPONENT, [datagridId,rowIndex,columnIndex]);
         }

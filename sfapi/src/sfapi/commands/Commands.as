@@ -193,6 +193,9 @@ package sfapi.commands
 				ExternalInterface.addCallback("doFlexType", 
 							 	  textCommands.doFlexType);
 							  
+				ExternalInterface.addCallback("setFlexValue", 
+							 	  textCommands.setFlexValue);
+							 	  
 				ExternalInterface.addCallback("doFlexStepper", 
 							   stepperCommands.doFlexStepper);
 							  
@@ -325,6 +328,9 @@ package sfapi.commands
 
 				ExternalInterface.addCallback("rawFlexDataGridFieldLabelForGridRow",
 							  dataGridCommands.rawFlexDataGridFieldLabelForGridRow);
+
+				ExternalInterface.addCallback("rawFlexDoubleClickDataGridUIComponent",
+							  dataGridCommands.rawFlexDoubleClickDataGridUIComponent);
 
 				ExternalInterface.addCallback("rawFlexProperty",
 							  propertyCommands.rawFlexProperty);

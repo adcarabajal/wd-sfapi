@@ -20,11 +20,12 @@
  */
 package sfapi.commands
 {
+	import flash.events.Event;
+	
 	import sfapi.core.AppTreeParser;
 	import sfapi.core.ErrorMessages;
 	import sfapi.core.ReferenceData;
 	import sfapi.core.Tools;
-	import flash.events.Event;
 	
 	public class TextCommands extends AbstractCommand
 	{
@@ -33,12 +34,36 @@ package sfapi.commands
 			super(aptObj, contextObj);
 		}
 		
+		public function setFlexValue(id:String, args:Number):String{
+		
+		var child:Object = appTreeParser.getElement(id);
+			if(child == null)
+			{
+				return ErrorMessages.getError(ErrorMessages.ERROR_ELEMENT_NOT_FOUND, [id]);
+			}
+			
+			if(child.hasOwnProperty("value"))
+			{
+				child.value = args;
+				child.setFocus();
+				return String(child.dispatchEvent(new Event(Event.CHANGE)));
+			}
+			else
+			{
+				return ErrorMessages.getError(ErrorMessages.ERROR_CANNOT_TYPE, [id]);
+			}
+			return null;
+		
+		
+		}
+		
+		
 		/**
 		 * Type some text in a TextInput control
 		 * @param  id  The ID of the Flex object
 		 * @param  args  text value to type
 		 * @return  'true' if the text is inputed. An error message if the call fails.
-		 */
+		 */ 
 		public function doFlexType(id:String, args:String):String
 		{
 			var child:Object = appTreeParser.getElement(id);

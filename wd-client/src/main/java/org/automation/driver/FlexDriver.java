@@ -30,6 +30,10 @@ public class FlexDriver {
         webDriver.get(url);
     }
 
+	public WebDriver getWebDriver(){
+		return this.webDriver;
+	}
+	
     public String click(final String objectId, final String optionalButtonLabel) {
         return call("doFlexClick", objectId, optionalButtonLabel);
     }
@@ -42,6 +46,10 @@ public class FlexDriver {
         call("doFlexType", objectId, value);
     }
 
+    public void setFlexValue(String objectId, String value){
+        call("setFlexValue", objectId, value);
+    }
+
     public String getText(String objectId){
         return call("getFlexText", objectId, "dummy");
     }
@@ -50,6 +58,10 @@ public class FlexDriver {
         call("doFlexSelect", objectId, text);
     }
 
+	public void gridDoubleClick(String datagridId, String rowIndex, String columnIndex){
+        call("rawFlexDoubleClickDataGridUIComponent", datagridId, rowIndex, columnIndex);
+    }
+	
     public void check(String objectId, String checked){
         call("doFlexCheckBox", objectId, checked);
     }
